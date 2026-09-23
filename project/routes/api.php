@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,7 @@ Route::middleware('auth.token')->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart/{product}', [CartController::class, 'store']);
     Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
+    Route::get('/order', [OrderController::class, 'index']);
+    Route::post('/order', [OrderController::class, 'store']);
 });
 
