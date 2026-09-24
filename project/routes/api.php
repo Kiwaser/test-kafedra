@@ -22,5 +22,12 @@ Route::middleware('auth.token')->group(function () {
     Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
     Route::get('/order', [OrderController::class, 'index']);
     Route::post('/order', [OrderController::class, 'store']);
+
+    // Admin only
+    Route::middleware('admin.only')->group(function () {
+        Route::post('/product', [ProductController::class, 'store']);
+        Route::patch('/product/{product}', [ProductController::class, 'update']);
+        Route::delete('/product/{product}', [ProductController::class, 'destroy']);
+    });
 });
 
