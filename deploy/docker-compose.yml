@@ -1,0 +1,58 @@
+services:
+  proxy:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ../project:/var/www/html
+      - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - app-net
+
+  php:
+    build:
+      context: ../
+      dockerfile: deploy/php/Dockerfile
+    volumes:
+      - ../project:/var/www/html
+    networks:
+      - app-net
+
+
+  pgsql:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-laravel}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-12345}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgsql_data:/var/lib/postgresql/data
+    networks:
+      - app-net
+
+#  pgadmin:
+#    image: elestio/pgadmin
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@admin.com}
+#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+#      PGADMIN_CONFIG_SERVER_MODE: "False"
+#    ports:
+#      - "5050:80"
+#    depends_on:
+#      - pgsql
+#    volumes:
+#      - pgadmin_data:/var/lib/pgadmin
+#    networks:
+#      - app-net
+
+volumes:
+  pgsql_data:
+  pgadmin_data:
+
+networks:
+  app-net:
+    driver: bridge
