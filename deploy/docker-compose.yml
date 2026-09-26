@@ -34,21 +34,6 @@ services:
     networks:
       - app-net
 
-#  pgadmin:
-#    image: elestio/pgadmin
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@admin.com}
-#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
-#      PGADMIN_CONFIG_SERVER_MODE: "False"
-#    ports:
-#      - "5050:80"
-#    depends_on:
-#      - pgsql
-#    volumes:
-#      - pgadmin_data:/var/lib/pgadmin
-#    networks:
-#      - app-net
-
 volumes:
   pgsql_data:
   pgadmin_data:
