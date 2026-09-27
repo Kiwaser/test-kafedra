@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'admin@flight.ru'],
             [
-                'fio' => 'Админ Админович Админов',
+                'fio' => 'Админов Админ Админович',
                 'password' => Hash::make('QWEasd123'),
                 'role' => 'admin',
                 'api_token' => Str::random(64),
@@ -29,6 +29,36 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'role' => 'client',
                 'api_token' => Str::random(64),
+            ]
+        );
+
+        User::firstOrCreate(
+            ['email' => 'For-tests-postman-admin@flight.ru'],
+            [
+                'fio' => 'Админ Админович Админов',
+                'password' => Hash::make('QWEasd123'),
+                'role' => 'admin',
+                'api_token' => '97aroWW1cF',
+            ]
+        );
+
+        User::firstOrCreate(
+            ['email' => 'For-tests-postman-client@flight.ru'],
+            [
+                'fio' => 'Антонов Антон Антонович',
+                'password' => Hash::make('QWEasd123'),
+                'role' => 'client',
+                'api_token' => 'user-token',
+            ]
+        );
+
+        User::firstOrCreate(
+            ['email' => 'For-tests-postman-login-logout@flight.ru'],
+            [
+                'fio' => 'Вадимов Вадим Вадимович',
+                'password' => Hash::make('QWEasd123'),
+                'role' => 'client',
+                'api_token' => 'user-token-login-logout',
             ]
         );
 

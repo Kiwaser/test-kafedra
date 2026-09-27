@@ -9,10 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthenticateToken
 {
-    /**
-     * Authenticate the request using the Bearer token issued at login/signup.
-     * Responds with the spec-defined 403 "Login failed" body when missing/invalid.
-     */
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->bearerToken();

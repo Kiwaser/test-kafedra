@@ -7,12 +7,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Guest
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/products', [ProductController::class, 'index']);
 
-// Authenticated (client + admin)
 Route::middleware('auth.token')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/profile', [ProfileController::class, 'show']);
@@ -23,7 +21,6 @@ Route::middleware('auth.token')->group(function () {
     Route::get('/order', [OrderController::class, 'index']);
     Route::post('/order', [OrderController::class, 'store']);
 
-    // Admin only
     Route::middleware('admin.only')->group(function () {
         Route::post('/product', [ProductController::class, 'store']);
         Route::patch('/product/{product}', [ProductController::class, 'update']);
