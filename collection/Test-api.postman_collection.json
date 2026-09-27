@@ -857,23 +857,23 @@
   "variable": [
     {
       "key": "host",
-      "value": ""
+      "value": "http://localhost:8000/api"
     },
     {
       "key": "bearer_token",
-      "value": ""
+      "value": "ufIx24ijyrxiXTYxVbfjGi5y87gwNCNw4z2MobSQIajlCsf8IIZrI1F8oidIcSJE"
     },
     {
       "key": "admin_token",
-      "value": ""
+      "value": "97aroWW1cF"
     },
     {
       "key": "user_token",
-      "value": ""
+      "value": "user-token"
     },
     {
       "key": "user-token-login-logout",
-      "value": ""
+      "value": "user-token-login-logout"
     }
   ]
 }
